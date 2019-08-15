@@ -22,12 +22,6 @@ const createBoardTaskWrapper = () => `<div class="board__tasks"></div>`;
 
 const render = (container, markUp, place = 'beforeend') => container.insertAdjacentHTML(place, markUp);
 
-// const boardContainer = main.querySelector('.board');
-
-// const boardTaskContainer = main.querySelector('.board__tasks');
-
-// control.insertAdjacentHTML('beforeend', createSiteMenuTemplate());
-
 render(control, createSiteMenuTemplate());
 render(main, createSearchTemplate());
 render(main, createFilterTemplate());
