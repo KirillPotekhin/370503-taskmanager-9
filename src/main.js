@@ -34,7 +34,9 @@ render(boardContainer, createBoardFilterTempleate());
 render(boardContainer, createBoardTaskWrapper());
 const boardTaskContainer = main.querySelector('.board__tasks');
 
-new Array(3).fill(``).forEach(() => render(boardTaskContainer, createCardTaskTemlate()));
+for (let i = 0; i <= 2; i++) {
+  render(boardTaskContainer, createCardTaskTemlate());
+}
 
 render(boardTaskContainer, createAddFormCardTaskTemplate(), 'afterbegin');
 
