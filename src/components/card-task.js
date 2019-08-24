@@ -1,17 +1,17 @@
-export const createCardTaskTemlate = () => {
-  return `<article class="card card--black">
+export const createCardTaskTemlate = ({description, dueDate, repeatingDays, tags, color, isArchive, isFavorite}) => {
+  return `<article class="card card--${color} ${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `card--repeat`: ``}">
     <div class="card__form">
       <div class="card__inner">
         <div class="card__control">
           <button type="button" class="card__btn card__btn--edit">
             edit
           </button>
-          <button type="button" class="card__btn card__btn--archive">
+          <button type="button" class="card__btn ${isArchive ? `card__btn--archive` : `card__btn--disabled`}">
             archive
           </button>
           <button
             type="button"
-            class="card__btn card__btn--favorites card__btn--disabled"
+            class="card__btn ${isFavorite ? `card__btn--favorites` : `card__btn--disabled`} "
           >
             favorites
           </button>
@@ -24,7 +24,7 @@ export const createCardTaskTemlate = () => {
         </div>
     
         <div class="card__textarea-wrap">
-          <p class="card__text">Example default task with default color.</p>
+          <p class="card__text">${description}</p>
         </div>
     
         <div class="card__settings">
@@ -32,19 +32,18 @@ export const createCardTaskTemlate = () => {
             <div class="card__dates">
               <div class="card__date-deadline">
                 <p class="card__input-deadline-wrap">
-                  <span class="card__date">23 September</span>
-                  <span class="card__time">11:15 PM</span>
+                  <span class="card__date">${new Date(dueDate).toDateString()}</span>
                 </p>
               </div>
             </div>
     
             <div class="card__hashtag">
               <div class="card__hashtag-list">
-                <span class="card__hashtag-inner">
+                ${Array.from(tags).map((tag) => `<span class="card__hashtag-inner">
                   <span class="card__hashtag-name">
-                    #todo
+                    #${tag}
                   </span>
-                </span>
+                </span>`).join(``)}
     
                 <span class="card__hashtag-inner">
                   <span class="card__hashtag-name">
@@ -63,5 +62,5 @@ export const createCardTaskTemlate = () => {
         </div>
       </div>
     </div>
-  </article>`;
+  </article>`.trim();
 };
