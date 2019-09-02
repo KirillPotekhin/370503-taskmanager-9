@@ -12,6 +12,8 @@ import {createCardTaskTemlate} from './components/card-task.js';
 
 import {createAddFormCardTaskTemplate} from './components/add-task.js';
 
+import {createEditFormCardTaskTemplate} from './components/edit-task.js';
+
 import {createButtonLoadMoreTemplate} from './components/load-more-button.js';
 
 const main = document.querySelector('.main');
@@ -24,9 +26,62 @@ const createBoardTaskWrapper = () => `<div class="board__tasks"></div>`;
 
 const render = (container, markUp, place = 'beforeend') => container.insertAdjacentHTML(place, markUp);
 
+const TASK_COUNT = 10;
+
+const tasksList = [];
+
+for(let i = 0; i < TASK_COUNT; i++) {
+  tasksList[i] = getTask();
+}
+
+const dataFilters = [
+  {
+    title: `ALL`, 
+    count() {
+      return tasksList.filter(it => it.isArchive !== true);
+    }
+  },
+  {
+    title: `OVERDUE`,
+    count() {
+      return tasksList.filter(it => it.dueDate < Date.now());
+    }
+  },
+  {
+    title: `TODAY`, 
+    count() {
+      return tasksList.filter(it => it.dueDate === Date.now());
+    }
+  },
+  {
+    title: `FAVORITES`, 
+    count() {
+      return tasksList.filter(it => it.isFavorite);
+    }
+  },
+  {
+    title: `REPEATING`, 
+    count() {
+      return tasksList.filter(it => Object.keys(it.repeatingDays).some(day => it.repeatingDays[day]));
+    }
+  },
+  {
+    title: `TAGS`, 
+    count() {
+      return tasksList.filter(it => it.tags.size);
+    }
+  },
+  {
+    title: `ARCHIVE`, 
+    count() {
+      return tasksList.filter(it => it.isArchive);
+    }
+  },
+];
+
 render(control, createSiteMenuTemplate());
 render(main, createSearchTemplate());
-render(main, createFilterTemplate());
+render(main, createFilterTemplate(dataFilters));
 
 render(main, createBoardWrapper());
 const boardContainer = main.querySelector('.board');
@@ -36,27 +91,20 @@ render(boardContainer, createBoardFilterTempleate());
 render(boardContainer, createBoardTaskWrapper());
 const boardTaskContainer = main.querySelector('.board__tasks');
 
-const TASK_COUNT = 18;
-
-const tasksList = [];
-
-for(let i = 0; i < TASK_COUNT; i++) {
-  tasksList[i] = getTask();
-}
-
 const NUMBER_ONE_RENDER_TASKS = 8;
 
 const firstRenderTask = () => {
   const firstRenderTaskNumber = TASK_COUNT <= NUMBER_ONE_RENDER_TASKS ? TASK_COUNT : NUMBER_ONE_RENDER_TASKS;
 
-  for(let i = 0; i < firstRenderTaskNumber; i++) {
+  boardTaskContainer.insertAdjacentHTML('beforeend', createEditFormCardTaskTemplate(tasksList[0]));
+  for(let i = 1; i < firstRenderTaskNumber; i++) {
     boardTaskContainer.insertAdjacentHTML('beforeend', createCardTaskTemlate(tasksList[i]));
   }  
 }
 
 firstRenderTask();
 
-render(boardTaskContainer, createAddFormCardTaskTemplate(), 'afterbegin');
+// render(boardTaskContainer, createAddFormCardTaskTemplate(), 'afterbegin');
 
 render(boardContainer, createButtonLoadMoreTemplate());
 
@@ -68,7 +116,6 @@ loadMoreButton.addEventListener('click', () => {
 
   for(let i = (boardTasksNumber.length); i < (boardTasksNumber.length + numberRenderTask); i++) {
     boardTaskContainer.insertAdjacentHTML('beforeend', createCardTaskTemlate(tasksList[i]));
-    console.log('i', i, 'кол карт для отрисовки', numberRenderTask, 'длина контейнера', boardTasksNumber.length);
   }
 
   const boardTasksNumberAfterRender = boardTaskContainer.querySelectorAll('.card');

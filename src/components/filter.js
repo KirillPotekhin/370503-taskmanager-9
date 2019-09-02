@@ -1,4 +1,4 @@
-export const createFilterTemplate = () => {
+export const createFilterTemplate = (dataFilters) => {
   return `<section class="main__filter filter container">
     <input
     type="radio"
@@ -8,7 +8,7 @@ export const createFilterTemplate = () => {
     checked
     />
     <label for="filter__all" class="filter__label">
-    All <span class="filter__all-count">13</span></label
+    ${dataFilters[0].title} <span class="filter__all-count">${dataFilters[0].count().length}</span></label
     >
     <input
     type="radio"
@@ -18,7 +18,7 @@ export const createFilterTemplate = () => {
     disabled
     />
     <label for="filter__overdue" class="filter__label"
-    >Overdue <span class="filter__overdue-count">0</span></label
+    >${dataFilters[1].title} <span class="filter__overdue-count">${dataFilters[1].count().length}</span></label
     >
     <input
     type="radio"
@@ -28,7 +28,7 @@ export const createFilterTemplate = () => {
     disabled
     />
     <label for="filter__today" class="filter__label"
-    >Today <span class="filter__today-count">0</span></label
+    >${dataFilters[2].title} <span class="filter__today-count">${dataFilters[2].count().length}</span></label
     >
     <input
     type="radio"
@@ -37,7 +37,7 @@ export const createFilterTemplate = () => {
     name="filter"
     />
     <label for="filter__favorites" class="filter__label"
-    >Favorites <span class="filter__favorites-count">1</span></label
+    >${dataFilters[3].title} <span class="filter__favorites-count">${dataFilters[3].count().length}</span></label
     >
     <input
     type="radio"
@@ -46,7 +46,7 @@ export const createFilterTemplate = () => {
     name="filter"
     />
     <label for="filter__repeating" class="filter__label"
-    >Repeating <span class="filter__repeating-count">1</span></label
+    >${dataFilters[4].title} <span class="filter__repeating-count">${dataFilters[4].count().length}</span></label
     >
     <input
     type="radio"
@@ -55,7 +55,7 @@ export const createFilterTemplate = () => {
     name="filter"
     />
     <label for="filter__tags" class="filter__label"
-    >Tags <span class="filter__tags-count">1</span></label
+    >${dataFilters[5].title} <span class="filter__tags-count">${dataFilters[5].count().length}</span></label
     >
     <input
     type="radio"
@@ -64,7 +64,7 @@ export const createFilterTemplate = () => {
     name="filter"
     />
     <label for="filter__archive" class="filter__label"
-    >Archive <span class="filter__archive-count">115</span></label
+    >${dataFilters[6].title} <span class="filter__archive-count">${dataFilters[6].count().length}</span></label
     >
   </section>`;
 };

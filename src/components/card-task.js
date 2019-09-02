@@ -6,12 +6,12 @@ export const createCardTaskTemlate = ({description, dueDate, repeatingDays, tags
           <button type="button" class="card__btn card__btn--edit">
             edit
           </button>
-          <button type="button" class="card__btn ${isArchive ? `card__btn--archive` : `card__btn--disabled`}">
+          <button type="button" class="card__btn card__btn--archive ${isArchive ? `` : `card__btn--disabled`}">
             archive
           </button>
           <button
             type="button"
-            class="card__btn ${isFavorite ? `card__btn--favorites` : `card__btn--disabled`} "
+            class="card__btn card__btn--favorites ${isFavorite ? `` : `card__btn--disabled`}"
           >
             favorites
           </button>
@@ -44,18 +44,6 @@ export const createCardTaskTemlate = ({description, dueDate, repeatingDays, tags
                     #${tag}
                   </span>
                 </span>`).join(``)}
-    
-                <span class="card__hashtag-inner">
-                  <span class="card__hashtag-name">
-                    #personal
-                  </span>
-                </span>
-    
-                <span class="card__hashtag-inner">
-                  <span class="card__hashtag-name">
-                    #important
-                  </span>
-                </span>
               </div>
             </div>
           </div>
