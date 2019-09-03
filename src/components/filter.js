@@ -6,6 +6,7 @@ export const createFilterTemplate = (dataFilters) => {
     class="filter__input visually-hidden"
     name="filter"
     checked
+    ${dataFilters[0].count().length ? `` : `disabled`}
     />
     <label for="filter__all" class="filter__label">
     ${dataFilters[0].title} <span class="filter__all-count">${dataFilters[0].count().length}</span></label
@@ -15,7 +16,7 @@ export const createFilterTemplate = (dataFilters) => {
     id="filter__overdue"
     class="filter__input visually-hidden"
     name="filter"
-    disabled
+    ${dataFilters[1].count().length ? `` : `disabled`}
     />
     <label for="filter__overdue" class="filter__label"
     >${dataFilters[1].title} <span class="filter__overdue-count">${dataFilters[1].count().length}</span></label
@@ -25,7 +26,7 @@ export const createFilterTemplate = (dataFilters) => {
     id="filter__today"
     class="filter__input visually-hidden"
     name="filter"
-    disabled
+    ${dataFilters[2].count().length ? `` : `disabled`}
     />
     <label for="filter__today" class="filter__label"
     >${dataFilters[2].title} <span class="filter__today-count">${dataFilters[2].count().length}</span></label
