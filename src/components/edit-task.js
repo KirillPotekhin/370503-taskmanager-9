@@ -1,5 +1,5 @@
 export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingDays, tags, color, isArchive, isFavorite}) => {
-  return `<article class="card card--edit card--${color} ${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `card--repeat`: ``}">
+  return `<article class="card card--edit card--${color} ${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `card--repeat` : ``}">
     <form class="card__form" method="get">
       <div class="card__inner">
         <div class="card__control">
@@ -34,7 +34,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
           <div class="card__details">
             <div class="card__dates">
               <button class="card__date-deadline-toggle" type="button">
-                date: <span class="card__date-status">${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `no` : `yes`}</span>
+                date: <span class="card__date-status">${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `no` : `yes`}</span>
               </button>
 
               <fieldset class="card__date-deadline">
@@ -44,13 +44,13 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     type="text"
                     placeholder=""
                     name="date"
-                    value="${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `` : new Date(dueDate).toDateString()}"
+                    value="${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `` : new Date(dueDate).toDateString()}"
                   />
                 </label>
               </fieldset>
 
               <button class="card__repeat-toggle" type="button">
-                repeat:<span class="card__repeat-status">${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `yes` : `no`}</span>
+                repeat:<span class="card__repeat-status">${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `yes` : `no`}</span>
               </button>
 
               <fieldset class="card__repeat-days">
@@ -61,7 +61,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     id="repeat-mo-4"
                     name="repeat"
                     value="mo"
-                    ${repeatingDays["mo"] ? `checked` : ``}
+                    ${repeatingDays[`mo`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-mo-4"
                     >mo</label
@@ -72,7 +72,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     id="repeat-tu-4"
                     name="repeat"
                     value="tu"
-                    ${repeatingDays["tu"] ? `checked` : ``}
+                    ${repeatingDays[`tu`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-tu-4"
                     >tu</label
@@ -83,7 +83,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     id="repeat-we-4"
                     name="repeat"
                     value="we"
-                    ${repeatingDays["we"] ? `checked` : ``}
+                    ${repeatingDays[`we`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-we-4"
                     >we</label
@@ -94,7 +94,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     id="repeat-th-4"
                     name="repeat"
                     value="th"
-                    ${repeatingDays["th"] ? `checked` : ``}
+                    ${repeatingDays[`th`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-th-4"
                     >th</label
@@ -105,7 +105,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     id="repeat-fr-4"
                     name="repeat"
                     value="fr"
-                    ${repeatingDays["fr"] ? `checked` : ``}
+                    ${repeatingDays[`fr`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-fr-4"
                     >fr</label
@@ -116,7 +116,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     name="repeat"
                     value="sa"
                     id="repeat-sa-4"
-                    ${repeatingDays["sa"] ? `checked` : ``}
+                    ${repeatingDays[`sa`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-sa-4"
                     >sa</label
@@ -127,7 +127,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                     id="repeat-su-4"
                     name="repeat"
                     value="su"
-                    ${repeatingDays["su"] ? `checked` : ``}
+                    ${repeatingDays[`su`] ? `checked` : ``}
                   />
                   <label class="card__repeat-day" for="repeat-su-4"
                     >su</label
@@ -174,7 +174,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                 class="card__color-input card__color-input--black visually-hidden"
                 name="color"
                 value="black"
-                ${color === "black" ? `checked` : ``}
+                ${color === `black` ? `checked` : ``}
               />
               <label
                 for="color-black-4"
@@ -187,7 +187,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                 class="card__color-input card__color-input--yellow visually-hidden"
                 name="color"
                 value="yellow"
-                ${color === "yellow" ? `checked` : ``}
+                ${color === `yellow` ? `checked` : ``}
               />
               <label
                 for="color-yellow-4"
@@ -200,7 +200,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                 class="card__color-input card__color-input--blue visually-hidden"
                 name="color"
                 value="blue"
-                ${color === "blue" ? `checked` : ``}
+                ${color === `blue` ? `checked` : ``}
               />
               <label
                 for="color-blue-4"
@@ -213,7 +213,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                 class="card__color-input card__color-input--green visually-hidden"
                 name="color"
                 value="green"
-                ${color === "green" ? `checked` : ``}
+                ${color === `green` ? `checked` : ``}
               />
               <label
                 for="color-green-4"
@@ -226,7 +226,7 @@ export const createEditFormCardTaskTemplate = ({description, dueDate, repeatingD
                 class="card__color-input card__color-input--pink visually-hidden"
                 name="color"
                 value="pink"
-                ${color === "pink" ? `checked` : ``}
+                ${color === `pink` ? `checked` : ``}
               />
               <label
                 for="color-pink-4"

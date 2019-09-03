@@ -1,5 +1,5 @@
 export const createCardTaskTemlate = ({description, dueDate, repeatingDays, tags, color, isArchive, isFavorite}) => {
-  return `<article class="card card--${color} ${Object.keys(repeatingDays).some(day => repeatingDays[day]) ? `card--repeat`: ``}">
+  return `<article class="card card--${color} ${Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? `card--repeat` : ``}">
     <div class="card__form">
       <div class="card__inner">
         <div class="card__control">
