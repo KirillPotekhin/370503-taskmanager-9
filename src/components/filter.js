@@ -2,7 +2,7 @@ export const createFilterTemplate = (dataFilters) => {
   return (() => {
     let filterContainer = [];
     filterContainer.push(`<section class="main__filter filter container">`);
-    for(let i = 0; i < dataFilters.length; i++) {
+    for (let i = 0; i < dataFilters.length; i++) {
       filterContainer.push(`<input
         type="radio"
         id="filter__${dataFilters[i].title.toLowerCase()}"
@@ -17,6 +17,6 @@ export const createFilterTemplate = (dataFilters) => {
       );
     }
     filterContainer.push(`</section>`);
-    return filterContainer.join('');
+    return filterContainer.join(``);
   })();
 };
