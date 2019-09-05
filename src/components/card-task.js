@@ -50,5 +50,5 @@ export const createCardTaskTemlate = ({description, dueDate, repeatingDays, tags
         </div>
       </div>
     </div>
-  </article>`.trim();
+  </article>`;
 };

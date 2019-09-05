@@ -96,9 +96,9 @@ const NUMBER_ONE_RENDER_TASKS = 8;
 const firstRenderTask = () => {
   const firstRenderTaskNumber = TASK_COUNT <= NUMBER_ONE_RENDER_TASKS ? TASK_COUNT : NUMBER_ONE_RENDER_TASKS;
 
-  boardTaskContainer.insertAdjacentHTML('beforeend', createEditFormCardTaskTemplate(tasksList[0]));
+  render(boardTaskContainer, createEditFormCardTaskTemplate(tasksList[0]));
   for(let i = 1; i < firstRenderTaskNumber; i++) {
-    boardTaskContainer.insertAdjacentHTML('beforeend', createCardTaskTemlate(tasksList[i]));
+    render(boardTaskContainer, createCardTaskTemlate(tasksList[i]));
   }  
 }
 
@@ -115,7 +115,7 @@ loadMoreButton.addEventListener('click', () => {
   const numberRenderTask = (TASK_COUNT - boardTasksNumber.length < NUMBER_ONE_RENDER_TASKS) && (TASK_COUNT - boardTasksNumber.length > 0) ? TASK_COUNT - boardTasksNumber.length : NUMBER_ONE_RENDER_TASKS;
 
   for(let i = (boardTasksNumber.length); i < (boardTasksNumber.length + numberRenderTask); i++) {
-    boardTaskContainer.insertAdjacentHTML('beforeend', createCardTaskTemlate(tasksList[i]));
+    render(boardTaskContainer, createCardTaskTemlate(tasksList[i]));
   }
 
   const boardTasksNumberAfterRender = boardTaskContainer.querySelectorAll('.card');
